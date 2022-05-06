@@ -2,13 +2,13 @@ import firebase from 'firebase'
 import { ref, onUnmounted } from 'vue'
 
 const config = {
-  apiKey: "AIzaSyD2nM5OFE7AUa6BucNbMscE2LboGe0C3Yk",
-  authDomain: "wedding-rr-invitation.firebaseapp.com",
-  projectId: "wedding-rr-invitation",
-  storageBucket: "wedding-rr-invitation.appspot.com",
-  messagingSenderId: "244705181450",
-  appId: "1:244705181450:web:dadd58fe135022469f04f3",
-  measurementId: "G-XZNKGSZXEV",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: 'wedding-rr-invitation',
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 }
 
 const firebaseApp = firebase.initializeApp(config)

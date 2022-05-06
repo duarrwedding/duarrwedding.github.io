@@ -293,7 +293,12 @@
             v-model="form.message"
           />
           <div class="button-send">
-            <button type="submit" class="form-kirim">KIRIM</button>
+            <button type="submit" class="form-kirim">
+              <span v-if="button">KIRIM</span>
+              <div class="spinner-border text-light" role="status" v-else>
+                <span class="sr-only">Loading...</span>
+              </div>
+            </button>
           </div>
         </form>
       </div>
@@ -327,6 +332,11 @@ export default {
   components: {
     CountDown
   },
+  data() {
+    return {
+      button: false
+    }
+  },
   mounted() {
     const observer = new IntersectionObserver(entries => {
       // We will fill in the callback later...
@@ -356,14 +366,13 @@ export default {
       message: ''
     })
     const users = useLoadUsers()
-    // let users = ''
     const onSubmit = async () => {
       console.log('masuk submission')
       await createUser({ ...form })
       form.name = ''
       form.relation = ''
       form.attendance = ''
-      form.message
+      form.message = ''
     }
     return { users, form, onSubmit }
   }
