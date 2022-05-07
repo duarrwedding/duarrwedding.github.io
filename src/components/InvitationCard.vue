@@ -2,21 +2,6 @@
   <div class="section-1">
     <spinner-dot v-if="spinner" />
     <template v-else>
-      <audio
-        src="../assets/sounds/bali.mp3"
-        preload="auto"
-        type="audio/mpeg"
-        controls
-      >
-        <embed
-          src="../assets/sounds/bali.mp3"
-          type="audio/mpeg"
-          loop="true"
-          preload="auto"
-          hidden="false"
-          autostart="true"
-        />
-      </audio>
       <div class="content-1">
         <img
           class="rr-logo animate__animated animate__fadeIn animate__delay-1s"

@@ -2,6 +2,11 @@
   <div class="all-section">
     <img class="bunga-atas" src="../assets/images/bunga-atas.png" />
     <img class="bunga-bawah" src="../assets/images/bunga-bawah.png" />
+    <audio style="display:none" id="my-audio" loop autoplay>
+      <source src="../assets/sounds/bali.ogg" type="audio/ogg" />
+      <source src="../assets/sounds/bali.ogg" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
     <div class="section-white section-2">
       <div class="content-2">
         <img
@@ -87,7 +92,7 @@
           <p class="story-additional">And the story begins…</p>
         </div>
         <div class="per-story">
-          <p class="story-title">December 9th, 2022</p>
+          <p class="story-title">December 9th, 2021</p>
           <p class="story-pre-desc">Our first casual meet</p>
           <p class="story-description">
             Surprisingly it was not for a date, it's for a business matter
@@ -95,7 +100,7 @@
           </p>
         </div>
         <div class="per-story">
-          <p class="story-title">December 22nd, 2022</p>
+          <p class="story-title">December 22nd, 2021</p>
           <p class="story-pre-desc">An unexpected moment in my life</p>
           <p class="story-description">
             Reyhan gave Rasta a gift containing a book entitled "40 Women's
@@ -206,7 +211,9 @@
               >GOOGLE MAPS</a
             ></button
           ><br />
-          <button class="btn-google-calendar-6">GOOGLE CALENDAR</button>
+          <button class="btn-google-calendar-6" @click="goToCalendar">
+            GOOGLE CALENDAR
+          </button>
         </div>
         <div class="photo-description-6">
           <img
@@ -229,18 +236,20 @@
             type="text"
             class="form-name"
             name="form-name"
-            placeholder="Isi nama..."
+            placeholder="....."
             maxlength="140"
             v-model="form.name"
+            required
           /><br />
           <label for="form-relation">Hubungan dengan mempelai</label><br />
           <input
             type="text"
             class="form-relation"
             name="form-relation"
-            placeholder="Isi ..."
+            placeholder="....."
             maxlength="140"
             v-model="form.relation"
+            required
           />
           <div class="kehadiran-form">
             <p class="kehadiran-6">Kehadiran</p>
@@ -252,6 +261,7 @@
                 name="option-kehadiran"
                 value="Hadir, 1 orang"
                 v-model="form.attendance"
+                required
               />
               <label class="option-label" for="option-one"
                 >Hadir, 1 orang</label
@@ -278,6 +288,7 @@
                 name="option-kehadiran"
                 value="Tidak Hadir"
                 v-model="form.attendance"
+                required
               />
               <label class="option-label" for="option-three">Tidak Hadir</label>
             </div>
@@ -289,16 +300,16 @@
             rows="4"
             cols="50"
             maxlength="140"
-            placeholder="Isi doa ..."
+            placeholder="....."
             v-model="form.message"
+            required
           />
           <div class="button-send">
             <button type="submit" class="form-kirim">
-              <span v-if="button">KIRIM</span>
-              <div class="spinner-border text-light" role="status" v-else>
-                <span class="sr-only">Loading...</span>
-              </div>
-            </button>
+              <span class="button-kirim">KIRIM</span>
+              <spinner-dot class="spinner-home" /></button
+            ><br />
+            <p id="form-text-id"></p>
           </div>
         </form>
       </div>
@@ -325,16 +336,19 @@
 <script>
 import CountDown from '@/components/CountDown.vue'
 import { createUser, useLoadUsers } from '@/firebase'
+import SpinnerDot from '@/components/SpinnerDot.vue'
 import { reactive } from 'vue'
 
 export default {
   name: 'WeddingContent',
   components: {
-    CountDown
+    CountDown,
+    SpinnerDot
   },
   data() {
     return {
-      button: false
+      button: false,
+      formMessage: ''
     }
   },
   mounted() {
@@ -358,6 +372,14 @@ export default {
     observer.observe(document.querySelector('.btn-google-calendar-6'))
     observer.observe(document.querySelector('.photo-description-6'))
   },
+  methods: {
+    goToCalendar() {
+      window.open(
+        'https://calendar.google.com/calendar/u/0/r/eventedit?text=Rasta+Reyha+Wedding&dates=20220520T260000Z/20220520T290000Z&details=Rasta+Reyhan+Wedding&location=Paviliun+Sunda+Bandung&sf=true&output=xml&pli=1',
+        '_blank'
+      )
+    }
+  },
   setup() {
     const form = reactive({
       name: '',
@@ -365,14 +387,40 @@ export default {
       attendance: '',
       message: ''
     })
+    // let users = ''
     const users = useLoadUsers()
     const onSubmit = async () => {
-      console.log('masuk submission')
-      await createUser({ ...form })
-      form.name = ''
-      form.relation = ''
-      form.attendance = ''
-      form.message = ''
+      try {
+        document.getElementsByClassName('button-kirim')[0].style.display =
+          'none'
+        document.getElementsByClassName('spinner-home')[0].style.display =
+          'block'
+
+        await createUser({ ...form })
+        form.name = ''
+        form.relation = ''
+        form.attendance = ''
+        form.message = ''
+      } catch (err) {
+        document.getElementById('form-text-id').innerHTML =
+          'Terjadi kesalahan. Mohon isi form kembali'
+        document.getElementById('form-text-id').style.color = 'red'
+        document.getElementById('form-text-id').style.display = 'inline'
+      } finally {
+        document.getElementsByClassName('button-kirim')[0].style.display =
+          'block'
+        document.getElementsByClassName('spinner-home')[0].style.display =
+          'none'
+        if (document.getElementById('form-text-id').style.color !== 'red') {
+          document.getElementById('form-text-id').innerHTML =
+            'Berhasil kirim form'
+          document.getElementById('form-text-id').style.color = 'green'
+          document.getElementById('form-text-id').style.display = 'inline'
+          setTimeout(async () => {
+            document.getElementById('form-text-id').style.display = 'none'
+          }, 3000)
+        }
+      }
     }
     return { users, form, onSubmit }
   }
@@ -385,6 +433,7 @@ export default {
   animation-name: animate-fade;
   animation-delay: 0s;
   animation-fill-mode: backwards;
+  opacity: 1 !important;
 }
 
 @keyframes animate-fade {
@@ -394,6 +443,12 @@ export default {
   100% {
     opacity: 1;
   }
+}
+
+.name-pr,
+.name-lk,
+.photo-description {
+  opacity: 0;
 }
 
 .all-section {
@@ -407,6 +462,17 @@ export default {
   width: 25vw;
   left: 0;
   z-index: 1;
+}
+
+.spinner-home {
+  padding: 0;
+  display: none;
+}
+
+#form-text-id {
+  display: inline;
+  text-align: center;
+  margin: 0;
 }
 
 .bunga-bawah {
@@ -432,7 +498,8 @@ export default {
 .rr-logo-2 {
   width: 25.36vw;
   display: block;
-  margin: 3.9vh auto 0 auto;
+  margin: 0 auto;
+  padding-top: 3.9vh;
 }
 
 .line-art-2 {
@@ -525,6 +592,7 @@ export default {
   margin-top: 6.13vh;
   width: 77.77vw;
   background-color: transparent;
+  opacity: 0;
 }
 
 .section-4 {
@@ -556,6 +624,7 @@ export default {
 .mempelai-4 {
   width: 76.57vw;
   margin-bottom: 5.92vh;
+  opacity: 0;
 }
 
 .rr-logo-4 {
@@ -642,6 +711,7 @@ export default {
 
 .dengan {
   margin: 2.68vh 0;
+  opacity: 0;
 }
 
 .story-section {
@@ -725,6 +795,7 @@ export default {
   margin-bottom: 2.56vh;
   letter-spacing: 0.3vh;
   outline: none;
+  opacity: 0;
 }
 
 .btn-google-calendar-6 {
@@ -737,6 +808,7 @@ export default {
   margin-bottom: 2.56vh;
   letter-spacing: 0.3vh;
   outline: none;
+  opacity: 0;
 }
 
 .foto-akad {
@@ -866,6 +938,10 @@ input[type='radio']:checked:after {
 .button-send {
   max-width: 100%;
   text-align: end;
+}
+
+.button-kirim {
+  display: block;
 }
 
 .the-option {
