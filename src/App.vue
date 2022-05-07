@@ -1,24 +1,19 @@
 <template>
   <div>
-    <download v-if="$route.fullPath === '/download'" />
-    <transition name="fade" v-else>
+    <transition name="fade">
       <invitation-card @invite="openInvitation" v-if="invitation" />
-      <home v-else />
+      <router-view v-else />
     </transition>
   </div>
 </template>
 
 <script>
 import InvitationCard from '@/components/InvitationCard.vue'
-import Home from '@/views/Home.vue'
-import Download from '@/views/Download.vue'
 
 export default {
   name: 'App',
   components: {
-    InvitationCard,
-    Home,
-    Download
+    InvitationCard
   },
   data() {
     return {

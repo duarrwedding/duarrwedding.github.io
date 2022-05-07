@@ -233,7 +233,7 @@
             type="text"
             class="form-name"
             name="form-name"
-            placeholder=".  .  .  .  .  .  .  .  .  ."
+            placeholder="Nama . . ."
             maxlength="140"
             v-model="form.name"
             required
@@ -243,7 +243,7 @@
             type="text"
             class="form-relation"
             name="form-relation"
-            placeholder=".  .  .  .  .  .  .  .  .  ."
+            placeholder="Hubungan . . ."
             maxlength="140"
             v-model="form.relation"
             required
@@ -297,7 +297,7 @@
             rows="4"
             cols="50"
             maxlength="140"
-            placeholder=".  .  .  .  .  .  .  .  .  ."
+            placeholder="Ucapan dan doa . . ."
             v-model="form.message"
             required
           />
@@ -860,7 +860,7 @@ input[type='text']:focus {
 }
 
 ::placeholder {
-  color: white;
+  color: #898585;
   opacity: 0.75;
   font-size: 10px;
 }
@@ -936,9 +936,6 @@ input[type='radio']:checked:after {
 .the-option {
   margin-bottom: 1.56vh;
 }
-.section-8 {
-  min-height: 100vh;
-}
 
 .title-8 {
   padding: 4.46vh 0 4.36vh 0;
@@ -954,12 +951,12 @@ input[type='radio']:checked:after {
 }
 
 .name-8 {
-  font-size: 25px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
 .relation-8 {
-  font-size: 17px;
+  font-size: 12px;
   margin-left: 2vw;
   text-transform: capitalize;
 }
