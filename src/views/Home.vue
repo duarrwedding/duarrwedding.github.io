@@ -236,7 +236,6 @@
             placeholder="Nama . . ."
             maxlength="140"
             v-model="form.name"
-            required
           /><br />
           <label for="form-relation">Hubungan dengan mempelai</label><br />
           <input
@@ -246,7 +245,6 @@
             placeholder="Hubungan . . ."
             maxlength="140"
             v-model="form.relation"
-            required
           />
           <div class="kehadiran-form">
             <p class="kehadiran-6">Kehadiran</p>
@@ -258,7 +256,6 @@
                 name="option-kehadiran"
                 value="Hadir, 1 orang"
                 v-model="form.attendance"
-                required
               />
               <label class="option-label" for="option-one"
                 >Hadir, 1 orang</label
@@ -285,7 +282,6 @@
                 name="option-kehadiran"
                 value="Tidak Hadir"
                 v-model="form.attendance"
-                required
               />
               <label class="option-label" for="option-three">Tidak Hadir</label>
             </div>
@@ -299,7 +295,6 @@
             maxlength="140"
             placeholder="Ucapan dan doa . . ."
             v-model="form.message"
-            required
           />
           <div class="button-send">
             <button type="submit" class="form-kirim">
