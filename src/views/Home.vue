@@ -332,7 +332,7 @@
 
 <script>
 import CountDown from '@/components/CountDown.vue'
-import { createUser, useLoadUsers } from '@/firebase'
+// import { createUser, useLoadUsers } from '@/firebase'
 import SpinnerDot from '@/components/SpinnerDot.vue'
 import { reactive } from 'vue'
 
@@ -376,8 +376,8 @@ export default {
       attendance: '',
       message: ''
     })
-    // let users = ''
-    const users = useLoadUsers()
+    let users = ''
+    // const users = useLoadUsers()
     const onSubmit = async () => {
       try {
         document.getElementsByClassName('button-kirim')[0].style.display =
@@ -385,7 +385,7 @@ export default {
         document.getElementsByClassName('spinner-home')[0].style.display =
           'block'
 
-        await createUser({ ...form })
+        // await createUser({ ...form })
         form.name = ''
         form.relation = ''
         form.attendance = ''
