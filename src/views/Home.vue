@@ -206,7 +206,7 @@
           <button class="btn-google-maps-6">
             <a
               class="open-google"
-              href="geo:-6.905462467492021,107.62015022617513"
+              href="https://g.page/paviliunsunda?share"
               target="_blank"
               >GOOGLE MAPS</a
             ></button
