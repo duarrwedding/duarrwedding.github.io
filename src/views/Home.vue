@@ -2,9 +2,9 @@
   <div class="all-section">
     <img class="bunga-atas" src="../assets/images/bunga-atas.png" />
     <img class="bunga-bawah" src="../assets/images/bunga-bawah.png" />
-    <audio style="display:none" id="my-audio" loop autoplay>
-      <source src="../assets/sounds/bali.ogg" type="audio/ogg" />
-      <source src="../assets/sounds/bali.ogg" type="audio/mpeg" />
+    <audio id="my-audio" loop autoplay>
+      <source src="../assets/sounds/bali-fix.mp3" type="audio/mpeg" />
+      <source src="../assets/sounds/bali-fix.mp3" type="audio/ogg" />
       Your browser does not support the audio element.
     </audio>
     <div class="section-white section-2">
@@ -349,7 +349,7 @@ export default {
     }
   },
   mounted() {
-    document.getElementsByTagName('audio')[0].play()
+    // document.getElementsByTagName('audio')[0].play()
     const observer = new IntersectionObserver(entries => {
       // We will fill in the callback later...
       entries.forEach(entry => {
@@ -562,7 +562,7 @@ export default {
 .content-3 {
   background-color: #333333;
   color: #e4d7d7;
-  height: 31vh;
+  height: 32vh;
 }
 
 .rr-bunga-3 {
