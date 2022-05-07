@@ -441,7 +441,7 @@ export default {
 }
 
 .all-section {
-  max-width: 100%;
+  min-width: 100vh;
   background-color: white;
 }
 
