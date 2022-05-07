@@ -211,9 +211,6 @@
               >GOOGLE MAPS</a
             ></button
           ><br />
-          <button class="btn-google-calendar-6" @click="goToCalendar">
-            GOOGLE CALENDAR
-          </button>
         </div>
         <div class="photo-description-6">
           <img
@@ -236,7 +233,7 @@
             type="text"
             class="form-name"
             name="form-name"
-            placeholder="....."
+            placeholder="...................."
             maxlength="140"
             v-model="form.name"
             required
@@ -246,7 +243,7 @@
             type="text"
             class="form-relation"
             name="form-relation"
-            placeholder="....."
+            placeholder="...................."
             maxlength="140"
             v-model="form.relation"
             required
@@ -300,7 +297,7 @@
             rows="4"
             cols="50"
             maxlength="140"
-            placeholder="....."
+            placeholder="...................."
             v-model="form.message"
             required
           />
@@ -335,7 +332,7 @@
 
 <script>
 import CountDown from '@/components/CountDown.vue'
-import { createUser, useLoadUsers } from '@/firebase'
+// import { createUser, useLoadUsers } from '@/firebase'
 import SpinnerDot from '@/components/SpinnerDot.vue'
 import { reactive } from 'vue'
 
@@ -352,6 +349,7 @@ export default {
     }
   },
   mounted() {
+    document.getElementsByTagName('audio')[0].play()
     const observer = new IntersectionObserver(entries => {
       // We will fill in the callback later...
       entries.forEach(entry => {
@@ -369,16 +367,7 @@ export default {
     observer.observe(document.querySelector('.dengan'))
     observer.observe(document.querySelector('.name-lk'))
     observer.observe(document.querySelector('.btn-google-maps-6'))
-    observer.observe(document.querySelector('.btn-google-calendar-6'))
     observer.observe(document.querySelector('.photo-description-6'))
-  },
-  methods: {
-    goToCalendar() {
-      window.open(
-        'https://calendar.google.com/calendar/u/0/r/eventedit?text=Rasta+Reyha+Wedding&dates=20220520T260000Z/20220520T290000Z&details=Rasta+Reyhan+Wedding&location=Paviliun+Sunda+Bandung&sf=true&output=xml&pli=1',
-        '_blank'
-      )
-    }
   },
   setup() {
     const form = reactive({
@@ -387,8 +376,8 @@ export default {
       attendance: '',
       message: ''
     })
-    // let users = ''
-    const users = useLoadUsers()
+    let users = ''
+    // const users = useLoadUsers()
     const onSubmit = async () => {
       try {
         document.getElementsByClassName('button-kirim')[0].style.display =
@@ -396,7 +385,7 @@ export default {
         document.getElementsByClassName('spinner-home')[0].style.display =
           'block'
 
-        await createUser({ ...form })
+        // await createUser({ ...form })
         form.name = ''
         form.relation = ''
         form.attendance = ''
@@ -447,7 +436,7 @@ export default {
 
 .name-pr,
 .name-lk,
-.photo-description {
+.photo-description-6 {
   opacity: 0;
 }
 
@@ -573,7 +562,7 @@ export default {
 .content-3 {
   background-color: #333333;
   color: #e4d7d7;
-  height: 29.57vh;
+  height: 31vh;
 }
 
 .rr-bunga-3 {
@@ -959,7 +948,7 @@ input[type='radio']:checked:after {
 
 .content-8 {
   margin: 0 13.52vw;
-  background-color: white;
+  background-color: transparent;
   text-align: start;
   max-height: 80vh;
 }
