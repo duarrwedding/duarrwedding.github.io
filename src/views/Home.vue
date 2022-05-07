@@ -441,8 +441,9 @@ export default {
 }
 
 .all-section {
-  min-width: 100vh;
+  max-width: 100%;
   background-color: white;
+  min-height: 100vh;
 }
 
 .bunga-atas {
