@@ -898,6 +898,7 @@ input[type='text']:focus {
 
 input[type='radio'] {
   -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type='radio']:after {
@@ -910,15 +911,14 @@ input[type='radio']:after {
   visibility: visible;
   border: 4px solid #4f4f4f;
   font-size: 10px;
+  margin: 0;
 }
 
 input[type='radio']:checked:after {
+  margin: 0;
   width: 15px;
   height: 15px;
   border-radius: 15px;
-  top: 3.5px;
-  left: -2px;
-  position: relative;
   background-color: #4f4f4f;
   content: '';
   display: inline-block;
@@ -931,6 +931,8 @@ input[type='radio']:checked:after {
   margin-right: 1vh;
   font-size: 10px;
   align-self: center;
+  position: relative;
+  top: -0.3vh;
 }
 
 .kehadiran-form {
@@ -961,6 +963,7 @@ input[type='radio']:checked:after {
   margin-bottom: 1.56vh;
   display: flex;
   flex-direction: row;
+  gap: 1vw;
 }
 
 .title-8 {
