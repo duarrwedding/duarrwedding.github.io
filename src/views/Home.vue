@@ -140,12 +140,18 @@
         <div class="description-content-5">
           <p class="description-5">
             Mahasuci Allah telah menciptakan manusia dengan berpasang-pasangan.
-            Sungguh besar rahmat dan karunia yang diberikan-Nya kepada keluarga
-            Kami.
+            Sungguh besar rahmat dan karunia yang diberikan-Nya<span
+              style="text-align: center"
+            >
+              kepada keluarga Kami.</span
+            >
           </p>
           <p class="description-5">
             Maka izinkan Kami mengundang sekaligus mengharapkan doa restu dari
-            bapak/ibu dalam acara pernikahan putra & putri kami.
+            bapak/ibu dalam
+            <span style="text-align: center">
+              acara pernikahan putra & putri kami.</span
+            >
           </p>
         </div>
         <div class="mempelai-5">
@@ -175,8 +181,10 @@
         </div>
         <div class="description-footer-5">
           <p class="description-5">
-            Atas kehadiran dan doa restu bapak/ibu yang hadir, Kami sampaikan
-            terima kasih
+            Atas kehadiran dan doa restu bapak/ibu yang
+            <span style="text-align: center">
+              hadir, Kami sampaikan terima kasih.</span
+            >
           </p>
         </div>
         <div class="footer-content-5">
@@ -683,14 +691,16 @@ export default {
 .description-content-5 {
   margin-bottom: 0 auto 1vh auto;
   font-size: 16px;
-  text-align: justify;
-  text-align-last: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .description-footer-5 {
   font-size: 16px;
-  text-align: justify;
-  text-align-last: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 5.58vh 0;
   z-index: 10;
 }
@@ -925,7 +935,7 @@ input[type='radio']:checked:after {
 }
 
 .option-label {
-  padding-left: 1.5vw;
+  margin-left: 1.5vw;
   font-size: 10px;
   align-self: center;
   position: relative;
