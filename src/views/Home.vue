@@ -683,16 +683,14 @@ export default {
 .description-content-5 {
   margin-bottom: 0 auto 1vh auto;
   font-size: 16px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  text-align: justify;
+  text-align-last: center;
 }
 
 .description-footer-5 {
   font-size: 16px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  text-align: justify;
+  text-align-last: center;
   margin: 5.58vh 0;
   z-index: 10;
 }
@@ -700,7 +698,6 @@ export default {
 .description-5 {
   text-align: justify;
   text-align-last: center;
-  text-justify: inter-word;
   max-width: 500px;
   margin-bottom: 1.79vh;
   align-self: center;
@@ -928,7 +925,7 @@ input[type='radio']:checked:after {
 }
 
 .option-label {
-  margin-left: 1.5vw;
+  padding-left: 1.5vw;
   font-size: 10px;
   align-self: center;
   position: relative;
