@@ -304,6 +304,28 @@
             <p id="form-text-id"></p>
           </div>
         </form>
+        <div class="youtube-live">
+          <p class="title-youtube">WEDDING ONLINE</p>
+          <p class="description-youtube">YouTube Live</p>
+          <p class="description-youtube-add">
+            Temui kami secara virtual untuk menyaksikan acara pernikahan kami
+            yang akan disiarkan secara langsung dengan menekan tombol dibawah
+            ini
+          </p>
+          <button class="tombol-youtube">
+            <img
+              class="rr-youtube"
+              src="../assets/images/youtube.png"
+              alt="Rasta & Reyhan Wedding"
+            />
+            <a
+              class="info-youtube"
+              href="https://bit.ly/LiveRastaReyhanWedding"
+              target="_blank"
+              >YOUTUBE LIVE</a
+            >
+          </button>
+        </div>
       </div>
     </div>
     <div class="section-white section-8">
@@ -375,19 +397,26 @@ export default {
     const users = useLoadUsers()
     const onSubmit = async () => {
       try {
+        document.getElementById('form-text-id').style.display = 'none'
         document.getElementsByClassName('button-kirim')[0].style.display =
           'none'
         document.getElementsByClassName('spinner-home')[0].style.display =
           'block'
 
-        await createUser({ ...form })
-        form.name = ''
-        form.relation = ''
-        form.attendance = ''
-        form.message = ''
+        const { name, relation, attendance, message } = form
+        if (name && relation && attendance && message) {
+          await createUser({ ...form })
+          form.name = ''
+          form.relation = ''
+          form.attendance = ''
+          form.message = ''
+          document.getElementById('form-text-id').style.color = 'green'
+        } else {
+          throw Error
+        }
       } catch (err) {
         document.getElementById('form-text-id').innerHTML =
-          'Terjadi kesalahan. Mohon isi form kembali'
+          'Mohon lengkapi form'
         document.getElementById('form-text-id').style.color = 'red'
         document.getElementById('form-text-id').style.display = 'inline'
       } finally {
@@ -395,10 +424,10 @@ export default {
           'block'
         document.getElementsByClassName('spinner-home')[0].style.display =
           'none'
+        console.log('--->', document.getElementById('form-text-id').style.color)
         if (document.getElementById('form-text-id').style.color !== 'red') {
           document.getElementById('form-text-id').innerHTML =
             'Berhasil kirim form'
-          document.getElementById('form-text-id').style.color = 'green'
           document.getElementById('form-text-id').style.display = 'inline'
           setTimeout(async () => {
             document.getElementById('form-text-id').style.display = 'none'
@@ -964,6 +993,49 @@ input[type='radio']:checked:after {
 }
 
 .response-8 {
-  margin-bottom: 2.9vh;
+  padding-bottom: 2.9vh;
+}
+
+.youtube-live {
+  text-align: center;
+  margin-top: 3vh;
+}
+
+.title-youtube {
+  font-size: 25px;
+  margin-bottom: 0;
+  letter-spacing: 3px;
+}
+
+.description-youtube {
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+.description-youtube-add {
+  font-size: 12px;
+}
+
+.tombol-youtube {
+  font-family: 'CaviarDreams';
+  background-color: #4f4f4f !important ;
+  border-radius: 100vh;
+  padding: 1.5vh 5vw;
+  margin-top: 1vh;
+  letter-spacing: 0.5vh;
+  outline: none;
+  margin-bottom: 5vh;
+  font-size: 12px;
+}
+
+.info-youtube,
+.info-youtube:active {
+  text-decoration: none;
+  color: #e5d8d8;
+}
+
+.rr-youtube {
+  width: 30px;
+  margin-right: 2vw;
 }
 </style>
