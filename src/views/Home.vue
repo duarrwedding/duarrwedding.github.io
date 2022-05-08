@@ -106,7 +106,7 @@
             Reyhan gave Rasta a gift containing a book entitled "40 Women's
             Provisions Before Marriage" Reyhan asked Rasta to become his
             soulmate, as well as asked permission from Rasta's Parents to
-            propose to their daughter
+            propose their daughter
           </p>
         </div>
         <div class="per-story">
@@ -827,12 +827,13 @@ export default {
 
 .foto-akad {
   width: 65vw;
-  margin-bottom: 8.25vh;
+  margin: 4vh 0;
 }
 
 .section-7 {
   margin: 0 10.86vw;
   text-align: justify;
+  position: relative;
 }
 
 .foto-undangan {
@@ -861,7 +862,7 @@ input.form-relation {
   border-radius: 25vh;
   outline: none;
   margin: 0.5vh 0 1.9vh 0;
-  width: 80vw;
+  width: 70vw;
   color: white;
   font-size: 10px;
 }
@@ -872,7 +873,7 @@ textarea {
   border-radius: 2vh;
   outline: none;
   margin: 0.5vh 0 1.78vh 0;
-  width: 80vw;
+  width: 70vw;
   height: 15.17hw;
   color: white;
   font-size: 10px;
@@ -903,9 +904,6 @@ input[type='radio']:after {
   width: 15px;
   height: 15px;
   border-radius: 15px;
-  top: 3.5px;
-  left: -2px;
-  position: relative;
   background-color: white;
   content: '';
   display: inline-block;
@@ -932,6 +930,7 @@ input[type='radio']:checked:after {
 .option-label {
   margin-right: 1vh;
   font-size: 10px;
+  align-self: center;
 }
 
 .kehadiran-form {
@@ -960,6 +959,8 @@ input[type='radio']:checked:after {
 
 .the-option {
   margin-bottom: 1.56vh;
+  display: flex;
+  flex-direction: row;
 }
 
 .title-8 {
