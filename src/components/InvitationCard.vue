@@ -17,7 +17,7 @@
           WEDDING E-INVITATION
         </p>
       </div>
-      <div class="d-flex justify-content-center">
+      <div>
         <button
           class="btn-invitation-1 animate__animated animate__fadeInUp animate__delay-1s"
           @click="invite"
@@ -57,7 +57,7 @@ export default {
 <style>
 .section-1 {
   background-color: #212121;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   position: relative;
   z-index: 9999;

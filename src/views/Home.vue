@@ -832,7 +832,7 @@ export default {
 
 .section-7 {
   margin: 0 10.86vw;
-  text-align: justify;
+  text-align: center;
   position: relative;
 }
 
@@ -928,11 +928,11 @@ input[type='radio']:checked:after {
 }
 
 .option-label {
-  margin-right: 1vh;
+  margin-left: 1.5vw;
   font-size: 10px;
   align-self: center;
   position: relative;
-  top: -0.3vh;
+  top: -0.9vh;
 }
 
 .kehadiran-form {
@@ -961,9 +961,6 @@ input[type='radio']:checked:after {
 
 .the-option {
   margin-bottom: 1.56vh;
-  display: flex;
-  flex-direction: row;
-  gap: 1vw;
 }
 
 .title-8 {
